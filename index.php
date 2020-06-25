@@ -11,7 +11,7 @@
 
      
         $queryUrl = 'https://'.$_REQUEST['DOMAIN'].'/rest/crm.contact.list.json';
-        $params = ['select'=> ['ID', 'NAME', 'LAST']
+        $params = ['select'=> ['ID', 'NAME', 'LAST_NAME']
         ];
 
         $queryData = http_build_query(array_merge($params, array("auth" => $_REQUEST['AUTH_ID'])));
