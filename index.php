@@ -43,33 +43,7 @@
         }
 
 
-        function delete_www($id, $param){
-            $queryUrl = 'https://'.$_REQUEST['DOMAIN'].'/rest/crm.company.update.json';
-            $params = [
-                "id"     => $id,
-                "fields" => [$param['VALUE'] => " aezakmi"],
-            
 
-            ];
-
-            $queryData = http_build_query(array_merge($params, array("auth" => $_REQUEST['AUTH_ID'])));
-                
-            
-
-            $curl = curl_init();
-            curl_setopt_array($curl, array(
-                CURLOPT_SSL_VERIFYPEER => 0,
-                CURLOPT_POST => 1,
-                CURLOPT_HEADER => 0,
-                CURLOPT_RETURNTRANSFER => 1,
-                CURLOPT_URL => $queryUrl,
-                CURLOPT_POSTFIELDS => $queryData,
-            ));
-
-            $result = json_decode(curl_exec($curl), true);
-            curl_close($curl);
-            out($result);   
-        }
 
 ?>
 
@@ -80,20 +54,12 @@
         }
     </style>
 <table border="1">
-    <?php foreach ($result['result'] as $company) {?>
+    <?php foreach ($result['result'] as $contact) {?>
     <tr>
-        <td><?=$company['ID'] ?></td>
-        <td><?=$company['TITLE'] ?></td>
-        <td><?php if(isset($company['PHONE'])) foreach ($company['PHONE'] as $phone) {echo $phone['VALUE'];} ?></td>
+        <td><?=$contact['ID']?></td>
+        <td><?=$contact['NAME'] ?></td>
+        <td><?=$contact['LAST_NAME']?></td>
 
-        
-        <td><?php if(isset($company['EMAIL'])) foreach ($company['EMAIL'] as $email) {echo $email['VALUE'];} ?></td>
-        <td><?php if(isset($company['WEB'])) foreach ($company['WEB'] as $web) {
-            echo $web['VALUE'];
-            if ($web['VALUE'] == 'www.' or $web['VALUE'] == 'нет'){
-                delete_www($company['ID'], $web);
-            }
-        } ?></td>
     </tr>
     <?php } ?>
 </table>
