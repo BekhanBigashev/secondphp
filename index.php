@@ -31,7 +31,7 @@
         $result = json_decode(curl_exec($curl), true);
         curl_close($curl);
        
-        // out($result);
+        out($result);
 
         function out($var, $var_name = ''){
             echo '<pre style="outline: 1px dashed red; padding: 5px;margin: 10px;color: white; background: black;">';
