@@ -10,7 +10,7 @@
     <?
 
      
-        $queryUrl = 'https://'.$_REQUEST['DOMAIN'].'/rest/crm.contact.list.json';
+        $queryUrl = 'https://'.$_REQUEST['DOMAIN'].'/rest/user.current.json';
         $params = ['select'=> ['ID', 'NAME', 'LAST_NAME']
         ];
 
@@ -32,7 +32,7 @@
         curl_close($curl);
        
         // out($result);
-        
+
         function out($var, $var_name = ''){
             echo '<pre style="outline: 1px dashed red; padding: 5px;margin: 10px;color: white; background: black;">';
             if (is_string($var)){
@@ -48,19 +48,12 @@
 
 ?>
 
-
-    <style>
-        table{
-            border-collapse: collapse;
-        }
-    </style>
-<table border="1">
+<table style="border-collapse: collapse;" border="1">
     <?php foreach ($result['result'] as $contact) {?>
     <tr>
         <td><?=$contact['ID']?></td>
         <td><?=$contact['NAME'] ?></td>
         <td><?=$contact['LAST_NAME']?></td>
-
     </tr>
     <?php } ?>
 </table>
