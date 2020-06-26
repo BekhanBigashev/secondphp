@@ -139,8 +139,8 @@ function generateContacts($record_count) {
             'crm.contact.add?'.http_build_query(
                 array(
                     "fields" => array(
-                        "NAME" => "Иван ".$i,
-                        "LAST_NAME" => "Иванов ".$i,
+                        "NAME" => "Naruto ".$i,
+                        "LAST_NAME" => "Uzumaki ".$i,
                         "PHONE" => array(
                             array("VALUE" => "555888", "VALUE_TYPE" => "WORK" )
                         ),
