@@ -49,11 +49,11 @@
 ?>
 
 <table style="border-collapse: collapse;" border="1">
-    <?php foreach ($result['result'] as $contact) {?>
+    <?php foreach ($result['result'] as $user) {?>
     <tr>
-        <td><?=$contact['ID']?></td>
-        <td><?=$contact['NAME'] ?></td>
-        <td><?=$contact['LAST_NAME']?></td>
+        <td><?=$user['NAME']?></td>
+        <td><?=$user['LAST_NAME'] ?></td>
+        <td><?=$user['EMAIL']?></td>
     </tr>
     <?php } ?>
 </table>
