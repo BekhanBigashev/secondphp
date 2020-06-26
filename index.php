@@ -11,7 +11,7 @@
 
      
         $queryUrl = 'https://'.$_REQUEST['DOMAIN'].'/rest/user.current.json';
-        $params = ['select'=> ['ID', 'NAME', 'LAST_NAME']
+        $params = ['select'=> ['NAME', 'LAST_NAME', 'EMAIL' ]
         ];
 
         $queryData = http_build_query(array_merge($params, array("auth" => $_REQUEST['AUTH_ID'])));
