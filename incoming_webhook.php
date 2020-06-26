@@ -151,7 +151,7 @@ function generateContacts($record_count) {
 
         if ($i % 50 == 0) {
             $res .= '>>> '.print_r(executeHook(array('cmd' => $batch)), true);
-            print_r($res);
+
             $batch = array();
         }
     }
@@ -162,8 +162,7 @@ function generateContacts($record_count) {
 }
 
 function executeHook($params) {
-    die;
-    print_r($params, true);
+    print_r($params);
     die;
     $queryUrl = 'https://kapmaniyamechty.bitrix24.kz/rest/1/tvhrfsm1tp1gp1q3/batch.json';
     $queryData = http_build_query($params);
