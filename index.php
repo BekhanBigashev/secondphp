@@ -11,7 +11,7 @@
 
      
         $queryUrl = 'https://'.$_REQUEST['DOMAIN'].'/rest/user.current.json';
-        $params = ['select'=> ['NAME', 'LAST_NAME', 'EMAIL' ]
+        $params = ['select'=> ['EMAIL', 'NAME', 'LAST_NAME']
         ];
 
         $queryData = http_build_query(array_merge($params, array("auth" => $_REQUEST['AUTH_ID'])));
@@ -51,9 +51,10 @@
 <table style="border-collapse: collapse;" border="1">
     <?php foreach ($result['result'] as $user) {?>
     <tr>
+        <td><?=$user['EMAIL']?></td>
         <td><?=$user['NAME']?></td>
         <td><?=$user['LAST_NAME'] ?></td>
-        <td><?=$user['EMAIL']?></td>
+        
     </tr>
     <?php } ?>
 </table>
