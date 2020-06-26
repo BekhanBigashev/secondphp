@@ -162,7 +162,7 @@ function generateContacts($record_count) {
 
 function executeHook($params) {
     die;
-    print_r($params);
+    print_r($params, true);
     die;
     $queryUrl = 'https://kapmaniyamechty.bitrix24.kz/rest/1/tvhrfsm1tp1gp1q3/batch.json';
     $queryData = http_build_query($params);
