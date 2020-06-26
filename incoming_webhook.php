@@ -1,5 +1,5 @@
 <?
-
+echo "aezakmi";
 $step = intval($_REQUEST['step']);
 $records = intval($_REQUEST['records']);
 $result = '';

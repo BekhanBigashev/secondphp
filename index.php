@@ -11,7 +11,7 @@
 </head>
 <body>
 <div class="container">
-    <h2>Мощный публичный внешний интерфейс с огромной кнопкой!</h2>
+    <h2>Мощный публичный внешний интерфейсd с огромной кнопкой!</h2>
     <div class="row alert alert-info">
         <div class="col-sm-6 col-xs-6 col-md-4 col-lg-3">
             <div class="input-group">
