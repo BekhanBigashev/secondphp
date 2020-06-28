@@ -1,97 +1,46 @@
-<html>
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<?
 
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title>Мегагенератор тестовых данных CRM</title>
-</head>
-<body>
-<div class="container">
-    <h2>Мощный публичный внешний интерфейсd с огромной кнопкой!</h2>
-    <div class="row alert alert-info">
-        <div class="col-sm-6 col-xs-6 col-md-4 col-lg-3">
-            <div class="input-group">
-                  <span class="input-group-btn">
-                    <button class="btn btn-warning" type="button" id="start-btn">Импортировать данные</button>
-                  </span>
-                  <input type="text" class="form-control" placeholder="кол-во" id="records" value="300">
-            </div><!-- /input-group -->
-        </div>
-        <div class="col-sm-6 col-xs-6 col-md-8 col-lg-9">
-            Будем генерировать данные вагонами. Но в строгой очередности!
-            <ul>
-                <li>Сначала создаем контакты. Много!</li>
-                <li>Потом создаем компании. Столько же</li>
-                <li>Затем тянем-потянем ID-контактов. Все, какие создали</li>
-                <li>Затем тянем-потянем ID-комапний. Тоже свои только</li>
-                <li>Создаем вагон сделок с привязкой каждой к компании и контакту</li>
-            </ul>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12">
-            <div class="progress">
-                <div class="progress-bar progress-bar-striped active" id="general-progress" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="min-width: 4em">
-                    <i class="fa fa-spinner fa-spin fa-fw hidden"></i> <span id="progress-value">0%</span>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12" id="log"></div>
-    </div>
-</div>
+$queryUrl = 'https://kapmaniyamechty.bitrix24.kz/rest/1/tvhrfsm1tp1gp1q3/batch.json';
+$queryData = http_build_query(array("cmd" => array(
 
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    "get_users" => 'user.search?'.http_build_query(array(
+            "select" => array("*"),
+        )),
+    "get_tasks" => 'tasks.task.list?'.http_build_query(array(
+            "select" => array("*"),
+        )),
+)));
 
-<script>
-    var step = 0;
+$curl = curl_init();
+curl_setopt_array($curl, array(
+    CURLOPT_SSL_VERIFYPEER => 0,
+    CURLOPT_POST => 1,
+    CURLOPT_HEADER => 0,
+    CURLOPT_RETURNTRANSFER => 1,
+    CURLOPT_URL => $queryUrl,
+    CURLOPT_POSTFIELDS => $queryData,
+));
 
-    var createData = function () {
-        console.log('start');
-        var records = $( "#records" ).val();
+$result = curl_exec($curl);
+curl_close($curl);
 
-        var selfcall = arguments.callee;
-
-        if (step < 3) {
-
-            var url = 'incoming_webhook.php?step=' + (step + 1) + '&records=' + records;
-            console.log('step', step);
-
-            var percent = parseInt((100 / 3)*(step + 1));
-            console.log('step percent', percent);
-            $( "#general-progress" ).css('width', percent + '%');
-            $( "#progress-value" ).html(percent + '%');
-
-            $.get( url, function( data ) {
-                console.log('step inside', data);
-                $( "#log" ).prepend( '<p><pre>' + data + '</pre></p>' );
-
-                setTimeout(selfcall, 1000);
-            });
-
+echo "<pre>";
+$result = json_decode($result, true);
+// print_r($result);
+echo "</pre>";
+$totalTasks = array();
+$userTasks = array();
+foreach ($result['result']['result']['get_users'] as $user) {
+    foreach ($result['result']['result']['get_tasks']['tasks'] as $task) {
+        if ($user['LAST_NAME'].' '.$user['NAME'] == $task['responsible']['name']){
+            $userTasks[$task['title']] = $task['status'];
+             
         }
-        else {
-            $( ".fa-spinner" ).addClass('hidden');
-        }
-
-
-        step++;
+    $totalTasks[$user['NAME']] = $userTasks;    
     }
+}
+echo "<pre>";
+print_r($totalTasks);
+echo "</pre>"; 
 
-    $('#start-btn').click(function() {
-        $( ".fa-spinner" ).removeClass('hidden');
-        createData();
-    })
-
-
-</script>
-</body>
-</html>
+?>
