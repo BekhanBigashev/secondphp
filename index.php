@@ -24,9 +24,8 @@ curl_setopt_array($curl, array(
 $result = curl_exec($curl);
 curl_close($curl);
 
-echo "<pre>";
 $result = json_decode($result, true);
-echo "</pre>";
+
 $totalTasks = array();//список всех пользователей и их задач
 $userTasks = array();//временное хранилище задач для каждого пользователя
 foreach ($result['result']['result']['get_users'] as $user) {
