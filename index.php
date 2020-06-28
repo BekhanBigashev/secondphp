@@ -46,13 +46,13 @@ echo "Количество задач Ивана: " . count($totalTasks['Ива�
 echo "<br>";
 echo "Количество задач Беки: " . count($totalTasks['Beka']);
 echo "<br>";
-$totalTasks = array_multisort($totalTasks);
+
 echo "<pre>";
 print_r($totalTasks);   
 echo "</pre>"; 
 ?>
 
-<?php foreach ($totalTasks as $user => $tasks): ?>
+<?php foreach (array_multisort($totalTasks) as $user => $tasks): ?>
     <div>
         <h1 class="user_name"><?= $user ?></h1>
         <ul class="tasks_list">
