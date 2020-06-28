@@ -59,7 +59,7 @@ echo "<br>";
         <h1 class="user_name"><?= $user ?></h1>
         <ul class="tasks_list">
             <?php foreach ($tasks as $task) { ?>
-                <li><?= $task ?></li>
+                <li style="list-style: none;"><?= $task ?></li>
            <?php } ?>
         </ul>
     </div>
