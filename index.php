@@ -47,9 +47,13 @@ echo "Количество задач Ивана" . count($totalTasks['Иван'
 echo "<br>";
 echo "Количество задач Беки" . count($totalTasks['Beka']);
 echo "<br>";
-foreach ($totalTasks as $user => $tasks) {
-    echo "<br>";
-    echo $user;
-    echo "<br>";
-}
+// foreach ($totalTasks as $user => $tasks) {
+//     echo "<br>";
+//     echo $user;
+//     echo "<br>";
+// }
 ?>
+
+<?php foreach ($totalTasks as $user => $tasks): ?>
+    <div><h1><?= $user ?></h1></div>
+<?php endforeach ?>
