@@ -34,11 +34,11 @@ foreach ($result['result']['result']['get_users'] as $user) {
     foreach ($result['result']['result']['get_tasks']['tasks'] as $task) {
         if ($user['ID'] == $task['responsible']['id']){
             $userTasks[$task['title']] = 'Статус: '.$task['status'];
-             
+            $totalTasks[$user['NAME']] = $userTasks;
         }
         
     }
-    $totalTasks[$user['NAME']] = $userTasks;
+    
 }
 echo "<pre>";
 print_r($totalTasks);
