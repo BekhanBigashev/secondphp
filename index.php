@@ -32,7 +32,7 @@ $totalTasks = array();
 $userTasks = array();
 foreach ($result['result']['result']['get_users'] as $user) {
     foreach ($result['result']['result']['get_tasks']['tasks'] as $task) {
-        if ($user['LAST_NAME'].' '.$user['NAME'] == $task['responsible']['name']){
+        if ($user['ID'] == $task['responsible']['id']){
             $userTasks[$task['title']] = $task['status'];
              
         }
