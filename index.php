@@ -55,5 +55,10 @@ echo "<br>";
 ?>
 
 <?php foreach ($totalTasks as $user => $tasks): ?>
-    <div><h1><?= $user ?></h1></div>
+    <div>
+        <h1><?= $user ?></h1>
+        <ul>
+            <li><?= $tasks ?></li>
+        </ul>
+    </div>
 <?php endforeach ?>
