@@ -58,9 +58,11 @@ echo "<br>";
     <div>
         <h1><?= $user ?></h1>
         <ul>
-            <li><?php foreach ($tasks as $task) {
+            <?php foreach ($tasks as $task) {
+                echo "<li>";
                 echo $task;
-            } ?></li>
+                echo "</li>";
+            } ?>
         </ul>
     </div>
 <?php endforeach ?>
