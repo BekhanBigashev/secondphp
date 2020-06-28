@@ -46,8 +46,10 @@ echo "<br>";
 echo "Количество задач Ивана" . count($totalTasks['Иван']);
 echo "<br>";
 echo "Количество задач Беки" . count($totalTasks['Beka']);
-
+echo "<br>";
 foreach ($totalTasks as $user => $tasks) {
+    echo "<br>";
     echo $user;
+    echo "<br>";
 }
 ?>
