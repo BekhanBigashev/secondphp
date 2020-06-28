@@ -45,7 +45,7 @@ arsort($totalTasks);
 
 <?php foreach ($totalTasks as $user => $tasks): ?>
     <div>
-        <h1 class="user_name"><?= $user."Задач: ".count($tasks) ?></h1>
+        <h1 class="user_name"><?= $user."  Задач: ".count($tasks) ?></h1>
         <ul class="tasks_list">
             <?php foreach ($tasks as $task) { ?>
                 <li style="list-style: none;"><?= $task ?></li>
