@@ -46,9 +46,9 @@ echo "Количество задач Ивана: " . count($totalTasks['Ива�
 echo "<br>";
 echo "Количество задач Беки: " . count($totalTasks['Beka']);
 echo "<br>";
-$totalTasks = asort($totalTasks);
+$totalTasks = arsort($totalTasks);
 echo "<pre>";
-print_r($totalTasks);
+print_r($totalTasks);   
 echo "</pre>"; 
 ?>
 
