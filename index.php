@@ -43,5 +43,10 @@ foreach ($result['result']['result']['get_users'] as $user) {
 echo "<pre>";
 print_r($totalTasks);
 echo "</pre>"; 
-
+echo count($totalTasks['Bekhan']);
 ?>
+
+
+<table>
+    
+</table>
