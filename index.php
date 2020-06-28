@@ -44,6 +44,7 @@ echo "<pre>";
 print_r($totalTasks);
 echo "</pre>"; 
 echo "Количество задач Бекхана" . count($totalTasks['Bekhan']);
+echo "<br>";
 echo "Количество задач Ивана" . count($totalTasks['Иван']);
 echo "Количество задач Беки" . count($totalTasks['Beka']);
 ?>
