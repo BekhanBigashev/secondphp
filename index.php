@@ -64,3 +64,10 @@ echo "<br>";
         </ul>
     </div>
 <?php endforeach ?>
+
+<style>
+    body{
+        background-color: #000;
+        color: white;
+    }
+</style>
