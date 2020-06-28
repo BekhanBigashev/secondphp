@@ -36,8 +36,9 @@ foreach ($result['result']['result']['get_users'] as $user) {
             $userTasks[$task['title']] = $task['status'];
              
         }
-    $totalTasks[$user['NAME']] = $userTasks;    
+        
     }
+    $totalTasks[$user['NAME']] = $userTasks;
 }
 echo "<pre>";
 print_r($totalTasks);
