@@ -47,15 +47,7 @@ echo "Количество задач Ивана" . count($totalTasks['Иван'
 echo "<br>";
 echo "Количество задач Беки" . count($totalTasks['Beka']);
 
-for ($i=0; $i < count($totalTasks);; $i++) { 
-    echo "<pre>";
-    print_r($totalTasks[$i]);
-    echo "</pre>"; 
+foreach ($totalTasks as $user => $tasks) {
+    echo $user
 }
-
 ?>
-
-
-<table>
-    
-</table>
