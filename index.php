@@ -41,11 +41,11 @@ foreach ($result['result']['result']['get_users'] as $user) {
 echo "<pre>";
 // print_r($totalTasks);
 echo "</pre>"; 
-echo "Количество задач Бекхана" . count($totalTasks['Bekhan']);
+echo "Количество задач Бекхана: " . count($totalTasks['Bekhan']);
 echo "<br>";
-echo "Количество задач Ивана" . count($totalTasks['Иван']);
+echo "Количество задач Ивана: " . count($totalTasks['Иван']);
 echo "<br>";
-echo "Количество задач Беки" . count($totalTasks['Beka']);
+echo "Количество задач Беки: " . count($totalTasks['Beka']);
 echo "<br>";
 // foreach ($totalTasks as $user => $tasks) {
 //     echo "<br>";
