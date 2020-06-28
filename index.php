@@ -2,7 +2,7 @@
 
 $queryUrl = 'https://kapmaniyamechty.bitrix24.kz/rest/1/tvhrfsm1tp1gp1q3/batch.json';
 $queryData = http_build_query(array("cmd" => array(
-
+// Вызов необходимых методов одним batch запросом 
     "get_users" => 'user.search?'.http_build_query(array(
             "select" => array("*"),
         )),
@@ -26,18 +26,17 @@ curl_close($curl);
 
 echo "<pre>";
 $result = json_decode($result, true);
-// print_r($result);
 echo "</pre>";
-$totalTasks = array();
-$userTasks = array();
+$totalTasks = array();//список всех пользователей и их задач
+$userTasks = array();//временное хранилище задач для каждого пользователя
 foreach ($result['result']['result']['get_users'] as $user) {
     foreach ($result['result']['result']['get_tasks']['tasks'] as $task) {
         if ($user['ID'] == $task['responsible']['id']){
-            $userTasks[$task['title']] = 'Статус: '.$task['status'];          
+            $userTasks[$task['title']] = 'Статус: '.$task['status'];//если id польователя равно id ответственного в задаче, то во временное хранилище загружаются все задачи для одного пользователя         
         }
     }
-    $totalTasks[$user['NAME']] = $userTasks;
-    $userTasks = array();
+    $totalTasks[$user['NAME']] = $userTasks;// добавляем пользователя и его задачи в список
+    $userTasks = array();//очищаем временное хранилище для следующей итерации
 }
 echo "<pre>";
 print_r($totalTasks);
