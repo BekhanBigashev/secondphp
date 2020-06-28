@@ -58,11 +58,9 @@ echo "<br>";
     <div>
         <h1 class="user_name"><?= $user ?></h1>
         <ul class="tasks_list">
-            <?php foreach ($tasks as $task) {
-                echo "<li style = "list-style:none;">";
-                echo $task;
-                echo "</li>";
-            } ?>
+            <?php foreach ($tasks as $task) { ?>
+                <li><?= $task ?></li>
+           <?php } ?>
         </ul>
     </div>
 <?php endforeach ?>
