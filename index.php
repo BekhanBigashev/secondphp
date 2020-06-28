@@ -37,7 +37,7 @@ foreach ($result['result']['result']['get_users'] as $user) {
             $totalTasks[$user['NAME']] = $userTasks;
 
         }
-        $userTasks  array();
+        $userTasks = array();
     }
     
 }
