@@ -39,10 +39,10 @@ foreach ($result['result']['result']['get_users'] as $user) {
     $userTasks = array();//очищаем временное хранилище для следующей итерации
 }
 
-arsort($totalTasks);
+arsort($totalTasks);//сортировка списка по убыванию 
 
 ?>
-
+<!-- вывод данных -->
 <?php foreach ($totalTasks as $user => $tasks): ?>
     <div>
         <h1 class="user_name"><?= $user."  Задач: ".count($tasks) ?></h1>
