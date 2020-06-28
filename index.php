@@ -39,8 +39,20 @@ foreach ($result['result']['result']['get_users'] as $user) {
     $userTasks = array();//очищаем временное хранилище для следующей итерации
 }
 echo "<pre>";
-print_r($totalTasks);
+// print_r($totalTasks);
 echo "</pre>"; 
+echo "Количество задач Бекхана" . count($totalTasks['Bekhan']);
+echo "<br>";
+echo "Количество задач Ивана" . count($totalTasks['Иван']);
+echo "<br>";
+echo "Количество задач Беки" . count($totalTasks['Beka']);
+
+for ($i=0; $i < count($totalTasks);; $i++) { 
+    echo "<pre>";
+print_r($totalTasks[$i]);
+echo "</pre>"; 
+}
+
 ?>
 
 
