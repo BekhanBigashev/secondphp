@@ -52,7 +52,7 @@ print_r($totalTasks);
 echo "</pre>"; 
 ?>
 
-<?php foreach (array_multisort($totalTasks) as $user => $tasks): ?>
+<?php foreach ($totalTasks as $user => $tasks): ?>
     <div>
         <h1 class="user_name"><?= $user ?></h1>
         <ul class="tasks_list">
