@@ -38,26 +38,14 @@ foreach ($result['result']['result']['get_users'] as $user) {
     $totalTasks[$user['NAME']] = $userTasks;// добавляем данные из временного хранилища в список всех пользователей
     $userTasks = array();//очищаем временное хранилище для следующей итерации
 }
-echo "<pre>";
-echo "</pre>"; 
-echo "Количество задач Бекхана: " . count($totalTasks['Bekhan']);
-echo "<br>";
-echo "Количество задач Ивана: " . count($totalTasks['Иван']);
-echo "<br>";
-echo "Количество задач Беки: " . count($totalTasks['Beka']);
-echo "<br>";
+
 arsort($totalTasks);
-echo "<pre>";
-print_r($totalTasks);   
-echo "</pre>"; 
-
-
 
 ?>
 
 <?php foreach ($totalTasks as $user => $tasks): ?>
     <div>
-        <h1 class="user_name"><?= $user ?></h1>
+        <h1 class="user_name"><?= $user."Задач: ".count($tasks) ?></h1>
         <ul class="tasks_list">
             <?php foreach ($tasks as $task) { ?>
                 <li style="list-style: none;"><?= $task ?></li>
