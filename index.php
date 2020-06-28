@@ -56,10 +56,10 @@ echo "<br>";
 
 <?php foreach ($totalTasks as $user => $tasks): ?>
     <div>
-        <h1><?= $user ?></h1>
-        <ul>
+        <h1 class="user_name"><?= $user ?></h1>
+        <ul class="tasks_list">
             <?php foreach ($tasks as $task) {
-                echo "<li>";
+                echo "<li style = "list-style:none;">";
                 echo $task;
                 echo "</li>";
             } ?>
